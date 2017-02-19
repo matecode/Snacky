@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/matecode/Snacky.svg)](https://jitpack.io/#matecode/Snacky)
+
 # Snacky
 
 Snacky is a small library to help you adding a [Snackbar](https://developer.android.com/reference/android/support/design/widget/Snackbar.html) to your layout with ease. It was created because of my own needs and is inspired by [Toasty](https://github.com/GrenderG/Toasty). Snacky uses an easy builder pattern to build a Snackbar and gives you some template designs like ERROR, WARNING, INFO and SUCCESS as well as some customization options. See code samples below
