@@ -1,4 +1,5 @@
 [![](https://jitpack.io/v/matecode/Snacky.svg)](https://jitpack.io/#matecode/Snacky)
+[![](https://img.shields.io/badge/LibHunt-Snacky-7DA800.svg?style=flat)](https://android.libhunt.com/project/snacky)
 
 # Snacky
 
