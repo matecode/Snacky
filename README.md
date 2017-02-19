@@ -1,6 +1,7 @@
 [![](https://jitpack.io/v/matecode/Snacky.svg)](https://jitpack.io/#matecode/Snacky)
 [![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=9)
 [![](https://img.shields.io/badge/LibHunt-Snacky-7DA800.svg?style=flat)](https://android.libhunt.com/project/snacky)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6VZNLDZS4R35A)
 
 # Snacky
 
