@@ -1,4 +1,7 @@
 [![](https://jitpack.io/v/matecode/Snacky.svg)](https://jitpack.io/#matecode/Snacky)
+[![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=9)
+[![](https://img.shields.io/badge/LibHunt-Snacky-7DA800.svg?style=flat)](https://android.libhunt.com/project/snacky)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/siede)
 
 # Snacky
 
@@ -75,7 +78,9 @@ After that you can handle the snackbar as you know it:
 
 `.show()` shows the snackbar
 
+## Example
 
+See [MainActivity.java](https://github.com/matecode/Snacky/blob/master/app/src/main/java/de/mateware/snackysample/MainActivity.java) for a list of examples as shown in [Screenshots](#screenshots).
 ## Installation
 
 Snacky is published via Jitpack. Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
