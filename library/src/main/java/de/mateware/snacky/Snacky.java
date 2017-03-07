@@ -32,11 +32,11 @@ import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 public class Snacky {
 
     private enum Type {
-        DEFAULT(null, null, null),
-        SUCCESS(Color.parseColor("#388E3C"), R.drawable.ic_check_black_24dp, Color.WHITE),
-        ERROR(Color.parseColor("#D50000"), R.drawable.ic_clear_black_24dp, Color.WHITE),
-        INFO(Color.parseColor("#3F51B5"), R.drawable.ic_info_outline_black_24dp, Color.WHITE),
-        WARNING(Color.parseColor("#FFA900"), R.drawable.ic_error_outline_black_24dp, Color.BLACK);
+        DEFAULT(null, null, null), SUCCESS(Color.parseColor("#388E3C"), R.drawable.ic_check_black_24dp, Color.WHITE), ERROR(
+                Color.parseColor("#D50000"), R.drawable.ic_clear_black_24dp, Color.WHITE), INFO(Color.parseColor("#3F51B5"),
+                                                                                                R.drawable.ic_info_outline_black_24dp,
+                                                                                                Color.WHITE), WARNING(
+                Color.parseColor("#FFA900"), R.drawable.ic_error_outline_black_24dp, Color.BLACK);
 
         private Integer color;
         private Integer iconResId;
@@ -94,12 +94,26 @@ public class Snacky {
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
         if (builder.backgroundColor != null) snackbarLayout.setBackgroundColor(builder.backgroundColor);
 
+        TextView actionText = (TextView) snackbarLayout.findViewById(android.support.design.R.id.snackbar_action);
+        if (builder.actionTextSize != null) {
+            if (builder.actionTextSizeUnit != null) actionText.setTextSize(builder.actionTextSizeUnit, builder.actionTextSize);
+            else actionText.setTextSize(builder.actionTextSize);
+        }
+        if (builder.actionTextTypefaceStyle != null) {
+            actionText.setTypeface(actionText.getTypeface(), builder.actionTextTypefaceStyle);
+        }
+
+
         TextView text = (TextView) snackbarLayout.findViewById(android.support.design.R.id.snackbar_text);
 
         if (builder.textSize != null) {
-            if (builder.textSizeUnit != null) text.setTextSize(builder.textSizeUnit,builder.textSize);
+            if (builder.textSizeUnit != null) text.setTextSize(builder.textSizeUnit, builder.textSize);
             else text.setTextSize(builder.textSize);
         }
+        if (builder.textTypefaceStyle != null) {
+            text.setTypeface(text.getTypeface(), builder.textTypefaceStyle);
+        }
+
 
         if (builder.textColor == null) builder.textColor = builder.type.getStandardTextColor();
         if (builder.textColors != null) text.setTextColor(builder.textColors);
@@ -144,25 +158,29 @@ public class Snacky {
 
     public static class Builder {
 
-        private View                 view                = null;
-        private Type                 type                = Type.DEFAULT;
-        private int                  duration            = Snackbar.LENGTH_SHORT;
-        private CharSequence         text                = "";
-        private int                  textResId           = 0;
-        private Integer              textColor           = null;
-        private ColorStateList       textColors          = null;
-        private Integer              textSizeUnit        = null;
-        private Float                textSize            = null;
-        private CharSequence         actionText          = "";
-        private int                  actionTextResId     = 0;
-        private View.OnClickListener actionClickListener = null;
-        private Integer              actionTextColor     = null;
-        private ColorStateList       actionTextColors    = null;
-        private int                  maxLines            = Integer.MAX_VALUE;
-        private boolean              centerText          = false;
-        private Drawable             icon                = null;
-        private int                  iconResId           = 0;
-        private Integer              backgroundColor     = null;
+        private View                 view                    = null;
+        private Type                 type                    = Type.DEFAULT;
+        private int                  duration                = Snackbar.LENGTH_SHORT;
+        private CharSequence         text                    = "";
+        private int                  textResId               = 0;
+        private Integer              textColor               = null;
+        private ColorStateList       textColors              = null;
+        private Integer              textSizeUnit            = null;
+        private Float                textSize                = null;
+        private Integer              textTypefaceStyle       = null;
+        private Integer              actionTextSizeUnit      = null;
+        private Float                actionTextSize          = null;
+        private CharSequence         actionText              = "";
+        private int                  actionTextResId         = 0;
+        private Integer              actionTextTypefaceStyle = null;
+        private View.OnClickListener actionClickListener     = null;
+        private Integer              actionTextColor         = null;
+        private ColorStateList       actionTextColors        = null;
+        private int                  maxLines                = Integer.MAX_VALUE;
+        private boolean              centerText              = false;
+        private Drawable             icon                    = null;
+        private int                  iconResId               = 0;
+        private Integer              backgroundColor         = null;
 
         private Builder() {
         }
@@ -210,6 +228,10 @@ public class Snacky {
             return this;
         }
 
+        public Builder setTextTypefaceStyle(int style) {
+            this.textTypefaceStyle = style;
+            return this;
+        }
 
         public Builder centerText() {
             this.centerText = true;
@@ -235,6 +257,23 @@ public class Snacky {
         public Builder setActionText(CharSequence text) {
             this.textResId = 0;
             this.actionText = text;
+            return this;
+        }
+
+        public Builder setActionTextSize(float textSize) {
+            this.actionTextSizeUnit = null;
+            this.actionTextSize = textSize;
+            return this;
+        }
+
+        public Builder setActionTextSize(int unit, float textSize) {
+            this.actionTextSizeUnit = unit;
+            this.actionTextSize = textSize;
+            return this;
+        }
+
+        public Builder setActionTextTypefaceStyle(int style) {
+            this.actionTextTypefaceStyle = style;
             return this;
         }
 

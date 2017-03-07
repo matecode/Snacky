@@ -1,7 +1,8 @@
 [![](https://jitpack.io/v/matecode/Snacky.svg)](https://jitpack.io/#matecode/Snacky)
 [![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=9)
 [![](https://img.shields.io/badge/LibHunt-Snacky-7DA800.svg?style=flat)](https://android.libhunt.com/project/snacky)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/siede)
+
+[![Donate](https://d1iczxrky3cnb2.cloudfront.net/button-small-green.png)](https://donorbox.org/matecode)
 
 # Snacky
 
@@ -34,15 +35,17 @@ It is necessary to set an activity or View for the snackbar.
 
 most of them are self-explaining
 
-`.setBackgroundColor()`
+`.setBackgroundColor()` Color or ColorStateList
 
 `.setText()` Charset or IntRes for text
 
 `.setTextColor()` Color int of text
 
-`.setTextSize()` 
+`.setTextSize()` size in SP or with ComplexUnit
 
-`.setMaxLines()`
+`.setTextTypefaceStyle()` NORMAL, BOLD, ITALIC, BOLD_ITALIC from [Typeface](https://developer.android.com/reference/android/graphics/Typeface.html)
+
+`.setMaxLines()` max lines of Snackbar, off by default
 
 `.centerText()` centers the text
 
@@ -50,9 +53,13 @@ most of them are self-explaining
 
 `.setActionTextColor()`
 
+`.setActionTextSize()`
+
+`.setActionTextTypefaceStyle()` like .setTextTypefaceStyle()
+
 `.setActionClickListener(View.OnClickListener)`
 
-`.setDuration(Snacky.DURATION)`
+`.setDuration(Snacky.DURATION)` SHORT, LONG, INDEFINITE
 
 `.setIcon()` Drawable to be shown, in my opinion ist best to use small drawables with 24dp size
 
@@ -80,7 +87,10 @@ After that you can handle the snackbar as you know it:
 
 ## Example
 
-See [MainActivity.java](https://github.com/matecode/Snacky/blob/master/app/src/main/java/de/mateware/snackysample/MainActivity.java) for a list of examples as shown in [Screenshots](#screenshots).
+See [ExampleActivity.java](https://github.com/matecode/Snacky/blob/master/app/src/main/java/de/mateware/snackysample/ExampleActivity.java) for a list of examples as shown in [Screenshots](#screenshots).
+
+There you can also the see the right use of CoordinatorLayout and FloatingActionButton. For Snacky Builder just use the view from OnClickListener in FAB to animate it on click. 
+
 ## Installation
 
 Snacky is published via Jitpack. Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
@@ -99,7 +109,7 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
     ...
-    compile 'com.github.matecode:Snacky:1.0.1'
+    compile 'com.github.matecode:Snacky:1.0.2'
 }
 ```
 
