@@ -1,29 +1,43 @@
 package de.mateware.snackysample;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import de.mateware.snacky.Snacky;
 
-
-public class MainActivity extends AppCompatActivity {
+public class ExampleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.activity_main);
+        setContentView(R.layout.activity_example);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snacky.builder()
+                      .setView(view)
+                      .setText("You have to use CoordinatorLayout as usual to have a FAB floating with the Snackbar.")
+                      .setDuration(Snacky.LENGTH_SHORT)
+                      .build()
+                      .show();
+            }
+        });
+
         findViewById(R.id.button_default).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snacky.builder()
-                      .setActivty(MainActivity.this)
+                      .setActivty(ExampleActivity.this)
                       .setActionText("ACTION")
                       .setActionClickListener(new View.OnClickListener() {
                           @Override
@@ -42,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Snacky.builder()
-                      .setActivty(MainActivity.this)
+                      .setActivty(ExampleActivity.this)
                       .setText("Success")
                       .setDuration(Snacky.LENGTH_SHORT)
                       .success()
@@ -53,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Snacky.builder()
-                      .setActivty(MainActivity.this)
+                      .setView(v)
                       .setText("Info (with centered text)")
                       .centerText()
                       .setDuration(Snacky.LENGTH_LONG)
@@ -65,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Snackbar warningSnackBar = Snacky.builder()
-                                                 .setActivty(MainActivity.this)
+                                                 .setActivty(ExampleActivity.this)
                                                  .setText("Warning with Snackbar.Callback")
                                                  .setDuration(Snacky.LENGTH_LONG)
                                                  .warning();
@@ -92,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Snacky.builder()
-                      .setView(layout)
+                      .setView(v)
                       .setText("Error")
                       .setDuration(Snacky.LENGTH_INDEFINITE)
                       .setActionText(android.R.string.ok)
@@ -108,14 +122,17 @@ public class MainActivity extends AppCompatActivity {
                       .setBackgroundColor(Color.parseColor("#0077CC"))
                       .setTextSize(18)
                       .setTextColor(Color.parseColor("#FFFFFF"))
+                      .setTextTypefaceStyle(Typeface.ITALIC)
                       .setText(
                               "This is a custom Snackbar with all possibilities of customization and an icon. It will be cutted after 4 lines of text, so it depends on your test device if you can read all of this")
                       .setMaxLines(4)
                       .centerText()
                       .setActionText("YEAH!")
                       .setActionTextColor(Color.parseColor("#66FFFFFF"))
+                      .setActionTextSize(20)
+                      .setActionTextTypefaceStyle(Typeface.BOLD)
                       .setIcon(R.mipmap.ic_launcher)
-                      .setActivty(MainActivity.this)
+                      .setActivty(ExampleActivity.this)
                       .setDuration(Snacky.LENGTH_INDEFINITE)
                       .build()
                       .show();
@@ -123,5 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
+
 }
