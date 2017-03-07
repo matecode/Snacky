@@ -87,7 +87,7 @@ After that you can handle the snackbar as you know it:
 
 ## Example
 
-See [MainActivity.java](https://github.com/matecode/Snacky/blob/master/app/src/main/java/de/mateware/snackysample/ExampleActivity.java) for a list of examples as shown in [Screenshots](#screenshots).
+See [ExampleActivity.java](https://github.com/matecode/Snacky/blob/master/app/src/main/java/de/mateware/snackysample/ExampleActivity.java) for a list of examples as shown in [Screenshots](#screenshots).
 
 There you can also the see the right use of CoordinatorLayout and FloatingActionButton. For Snacky Builder just use the view from OnClickListener in FAB to animate it on click. 
 
