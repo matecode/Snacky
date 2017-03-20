@@ -37,7 +37,7 @@ public class ExampleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Snacky.builder()
-                      .setActivty(ExampleActivity.this)
+                      .setActivity(ExampleActivity.this)
                       .setActionText("ACTION")
                       .setActionClickListener(new View.OnClickListener() {
                           @Override
@@ -56,7 +56,7 @@ public class ExampleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Snacky.builder()
-                      .setActivty(ExampleActivity.this)
+                      .setActivity(ExampleActivity.this)
                       .setText("Success")
                       .setDuration(Snacky.LENGTH_SHORT)
                       .success()
@@ -79,7 +79,7 @@ public class ExampleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Snackbar warningSnackBar = Snacky.builder()
-                                                 .setActivty(ExampleActivity.this)
+                                                 .setActivity(ExampleActivity.this)
                                                  .setText("Warning with Snackbar.Callback")
                                                  .setDuration(Snacky.LENGTH_LONG)
                                                  .warning();
@@ -132,7 +132,7 @@ public class ExampleActivity extends AppCompatActivity {
                       .setActionTextSize(20)
                       .setActionTextTypefaceStyle(Typeface.BOLD)
                       .setIcon(R.mipmap.ic_launcher)
-                      .setActivty(ExampleActivity.this)
+                      .setActivity(ExampleActivity.this)
                       .setDuration(Snacky.LENGTH_INDEFINITE)
                       .build()
                       .show();
