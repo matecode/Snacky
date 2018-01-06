@@ -29,6 +29,6 @@ dependencies {
     })
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVer"
     compile project(':library')
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }

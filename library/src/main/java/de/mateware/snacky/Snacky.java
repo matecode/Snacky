@@ -185,7 +185,7 @@ public class Snacky {
         private Builder() {
         }
 
-        public Builder setActivty(Activity activty) {
+        public Builder setActivity(Activity activty) {
             return setView(((ViewGroup) activty.findViewById(android.R.id.content)).getChildAt(0));
         }
 
