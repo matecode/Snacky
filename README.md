@@ -1,5 +1,5 @@
 [![](https://jitpack.io/v/matecode/Snacky.svg)](https://jitpack.io/#matecode/Snacky)
-[![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=14)
+[![API](https://img.shields.io/badge/API-14%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=14)
 [![](https://img.shields.io/badge/LibHunt-Snacky-7DA800.svg?style=flat)](https://android.libhunt.com/project/snacky)
 
 [![Donate](https://d1iczxrky3cnb2.cloudfront.net/button-small-green.png)](https://donorbox.org/matecode)
