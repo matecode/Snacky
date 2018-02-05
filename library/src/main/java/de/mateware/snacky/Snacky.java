@@ -332,7 +332,7 @@ public class Snacky {
         }
 
         private Snackbar make() {
-            if (view == null) throw new IllegalStateException("Snacky Error: you must set Activtyt or view before make a snack");
+            if (view == null) throw new IllegalStateException("Snacky Error: You must set an Activity or a View before making a snack");
             if (textResId != 0) text = view.getResources()
                                            .getText(textResId);
             if (actionTextResId != 0) actionText = view.getResources()
