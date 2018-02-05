@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
@@ -32,11 +33,15 @@ import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 public class Snacky {
 
     private enum Type {
-        DEFAULT(null, null, null), SUCCESS(Color.parseColor("#388E3C"), R.drawable.ic_check_black_24dp, Color.WHITE), ERROR(
-                Color.parseColor("#D50000"), R.drawable.ic_clear_black_24dp, Color.WHITE), INFO(Color.parseColor("#3F51B5"),
-                                                                                                R.drawable.ic_info_outline_black_24dp,
-                                                                                                Color.WHITE), WARNING(
-                Color.parseColor("#FFA900"), R.drawable.ic_error_outline_black_24dp, Color.BLACK);
+        DEFAULT(null, null, null), SUCCESS(Color.parseColor("#388E3C"),
+                                           R.drawable.ic_check_black_24dp,
+                                           Color.WHITE), ERROR(Color.parseColor("#D50000"),
+                                                               R.drawable.ic_clear_black_24dp,
+                                                               Color.WHITE), INFO(Color.parseColor("#3F51B5"),
+                                                                                  R.drawable.ic_info_outline_black_24dp,
+                                                                                  Color.WHITE), WARNING(Color.parseColor("#FFA900"),
+                                                                                                        R.drawable.ic_error_outline_black_24dp,
+                                                                                                        Color.BLACK);
 
         private Integer color;
         private Integer iconResId;
@@ -54,8 +59,10 @@ public class Snacky {
 
         public Drawable getIcon(Context context) {
             if (iconResId == null) return null;
-            Drawable drawable = SnackyUtils.tintDrawable(ContextCompat.getDrawable(context, iconResId), standardTextColor);
-            //drawable.setAlpha(100);
+            Drawable drawable = ContextCompat.getDrawable(context, iconResId);
+            if (drawable != null) {
+                drawable = SnackyUtils.tintDrawable(drawable, standardTextColor);
+            }
             return drawable;
         }
 
@@ -94,24 +101,35 @@ public class Snacky {
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
         if (builder.backgroundColor != null) snackbarLayout.setBackgroundColor(builder.backgroundColor);
 
-        TextView actionText = (TextView) snackbarLayout.findViewById(android.support.design.R.id.snackbar_action);
+        TextView actionText = snackbarLayout.findViewById(android.support.design.R.id.snackbar_action);
         if (builder.actionTextSize != null) {
             if (builder.actionTextSizeUnit != null) actionText.setTextSize(builder.actionTextSizeUnit, builder.actionTextSize);
             else actionText.setTextSize(builder.actionTextSize);
         }
+        Typeface actionTextTypeface = actionText.getTypeface();
+        if (builder.actionTextTypeface != null)
+            actionTextTypeface = builder.actionTextTypeface;
         if (builder.actionTextTypefaceStyle != null) {
-            actionText.setTypeface(actionText.getTypeface(), builder.actionTextTypefaceStyle);
+            actionText.setTypeface(actionTextTypeface, builder.actionTextTypefaceStyle);
+        } else {
+            actionText.setTypeface(actionTextTypeface);
         }
 
 
-        TextView text = (TextView) snackbarLayout.findViewById(android.support.design.R.id.snackbar_text);
+        TextView text = snackbarLayout.findViewById(android.support.design.R.id.snackbar_text);
 
         if (builder.textSize != null) {
             if (builder.textSizeUnit != null) text.setTextSize(builder.textSizeUnit, builder.textSize);
             else text.setTextSize(builder.textSize);
         }
+
+        Typeface textTypeface = text.getTypeface();
+        if (builder.textTypeface != null)
+            textTypeface = builder.textTypeface;
         if (builder.textTypefaceStyle != null) {
-            text.setTypeface(text.getTypeface(), builder.textTypefaceStyle);
+            text.setTypeface(textTypeface, builder.textTypefaceStyle);
+        } else {
+            text.setTypeface(textTypeface);
         }
 
 
@@ -168,11 +186,13 @@ public class Snacky {
         private Integer              textSizeUnit            = null;
         private Float                textSize                = null;
         private Integer              textTypefaceStyle       = null;
+        private Typeface             textTypeface            = null;
         private Integer              actionTextSizeUnit      = null;
         private Float                actionTextSize          = null;
         private CharSequence         actionText              = "";
         private int                  actionTextResId         = 0;
         private Integer              actionTextTypefaceStyle = null;
+        private Typeface             actionTextTypeface      = null;
         private View.OnClickListener actionClickListener     = null;
         private Integer              actionTextColor         = null;
         private ColorStateList       actionTextColors        = null;
@@ -228,6 +248,11 @@ public class Snacky {
             return this;
         }
 
+        public Builder setTextTypeface(Typeface typeface) {
+            this.textTypeface = typeface;
+            return this;
+        }
+
         public Builder setTextTypefaceStyle(int style) {
             this.textTypefaceStyle = style;
             return this;
@@ -271,6 +296,12 @@ public class Snacky {
             this.actionTextSize = textSize;
             return this;
         }
+
+        public Builder setActionTextTypeface(Typeface typeface) {
+            this.actionTextTypeface = typeface;
+            return this;
+        }
+
 
         public Builder setActionTextTypefaceStyle(int style) {
             this.actionTextTypefaceStyle = style;
@@ -332,7 +363,8 @@ public class Snacky {
         }
 
         private Snackbar make() {
-            if (view == null) throw new IllegalStateException("Snacky Error: You must set an Activity or a View before making a snack");
+            if (view == null)
+                throw new IllegalStateException("Snacky Error: You must set an Activity or a View before making a snack");
             if (textResId != 0) text = view.getResources()
                                            .getText(textResId);
             if (actionTextResId != 0) actionText = view.getResources()

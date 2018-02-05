@@ -1,5 +1,5 @@
 [![](https://jitpack.io/v/matecode/Snacky.svg)](https://jitpack.io/#matecode/Snacky)
-[![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=9)
+[![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=14)
 [![](https://img.shields.io/badge/LibHunt-Snacky-7DA800.svg?style=flat)](https://android.libhunt.com/project/snacky)
 
 [![Donate](https://d1iczxrky3cnb2.cloudfront.net/button-small-green.png)](https://donorbox.org/matecode)
@@ -43,6 +43,8 @@ most of them are self-explaining
 
 `.setTextSize()` size in SP or with ComplexUnit
 
+`.setTextTypeface()` Typeface
+
 `.setTextTypefaceStyle()` NORMAL, BOLD, ITALIC, BOLD_ITALIC from [Typeface](https://developer.android.com/reference/android/graphics/Typeface.html)
 
 `.setMaxLines()` max lines of Snackbar, off by default
@@ -54,6 +56,8 @@ most of them are self-explaining
 `.setActionTextColor()`
 
 `.setActionTextSize()`
+
+`.setActionTextTypeface()`
 
 `.setActionTextTypefaceStyle()` like .setTextTypefaceStyle()
 
@@ -109,14 +113,14 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
     ...
-    compile 'com.github.matecode:Snacky:1.0.2'
+    compile 'com.github.matecode:Snacky:1.0.3'
 }
 ```
 
 ## Licence
 
 ```
-Copyright 2017 Mate Siede
+Copyright 2018 Mate Siede
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
