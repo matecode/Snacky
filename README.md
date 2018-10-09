@@ -7,11 +7,8 @@
 # Snacky
 
 Snacky is a small library to help you adding a [Snackbar](https://developer.android.com/reference/android/support/design/widget/Snackbar.html) to your layout with ease. It was created because of my own needs and is inspired by [Toasty](https://github.com/GrenderG/Toasty). Snacky uses an easy builder pattern to build a Snackbar and gives you some template designs like ERROR, WARNING, INFO and SUCCESS as well as some customization options. See code samples below
-<div style="background-color:#660000;">
-## Important Notices
 
-As of version 1.1.4 Snacky is is only compatible with androidX and not longer with support library apps!
-</div>
+<span style="background-color:#660000;">As of version 1.1.4 Snacky is is only compatible with androidX and not longer with support library apps!</span>
 
 ## Screenshots
 
