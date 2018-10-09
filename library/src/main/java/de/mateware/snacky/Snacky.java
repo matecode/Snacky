@@ -7,14 +7,14 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntDef;
-import android.support.annotation.IntRange;
-import android.support.annotation.RestrictTo;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.IntRange;
+import androidx.annotation.RestrictTo;
+import androidx.annotation.StringRes;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -24,7 +24,7 @@ import android.widget.TextView;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 
 /**
  * Created by Mate on 18.02.2017.
@@ -101,7 +101,7 @@ public class Snacky {
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
         if (builder.backgroundColor != null) snackbarLayout.setBackgroundColor(builder.backgroundColor);
 
-        TextView actionText = snackbarLayout.findViewById(android.support.design.R.id.snackbar_action);
+        TextView actionText = snackbarLayout.findViewById(com.google.android.material.R.id.snackbar_action);
         if (builder.actionTextSize != null) {
             if (builder.actionTextSizeUnit != null) actionText.setTextSize(builder.actionTextSizeUnit, builder.actionTextSize);
             else actionText.setTextSize(builder.actionTextSize);
@@ -116,7 +116,7 @@ public class Snacky {
         }
 
 
-        TextView text = snackbarLayout.findViewById(android.support.design.R.id.snackbar_text);
+        TextView text = snackbarLayout.findViewById(com.google.android.material.R.id.snackbar_text);
 
         if (builder.textSize != null) {
             if (builder.textSizeUnit != null) text.setTextSize(builder.textSizeUnit, builder.textSize);
