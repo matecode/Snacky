@@ -115,7 +115,7 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.matecode:Snacky:1.1.4'
+    implementation 'com.github.matecode:Snacky:1.1.5'
     implementation 'com.google.android.material:material:1.0.0'
 }
 ```
