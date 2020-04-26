@@ -5,7 +5,7 @@ ext {
     minSdkVer = 14
     targetSdkVer = 28
 
-    versionCodeInt = 4
+    versionCodeInt = 6
     versionNamePrefix = "1.1."
 }
 
