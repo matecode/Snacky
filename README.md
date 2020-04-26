@@ -35,13 +35,13 @@ It is necessary to set an activity or View for the snackbar.
 
 #### Customization
 
-most of them are self-explaining
+most of them are self-explaining, all colors are *not* Resource Ids, but parsed colors, so use ContextCompat.getColor() if you want to use Resource-colors)
 
-`.setBackgroundColor()` Color or ColorStateList
+`.setBackgroundColor()` Color
 
 `.setText()` Charset or IntRes for text
 
-`.setTextColor()` Color int of text
+`.setTextColor()` Color or ColorStateList
 
 `.setTextSize()` size in SP or with ComplexUnit
 
@@ -55,7 +55,7 @@ most of them are self-explaining
 
 `.setActionText()`
 
-`.setActionTextColor()`
+`.setActionTextColor()` Color or ColorStateList
 
 `.setActionTextSize()`
 
