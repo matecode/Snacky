@@ -11,9 +11,12 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IntDef;
 import androidx.annotation.IntRange;
+import androidx.annotation.Px;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StringRes;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -101,6 +104,8 @@ public class Snacky {
         }
 
         Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) snackbarLayout.getLayoutParams();
+        params.setMargins(builder.backgroundMargin, 0, builder.backgroundMargin, builder.backgroundMargin);
 
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
         if (builder.backgroundResId != null) snackbarLayout.setBackgroundResource(builder.backgroundResId);
@@ -207,6 +212,7 @@ public class Snacky {
         private int                  iconResId               = 0;
         private Integer              backgroundColor         = null;
         private Integer              backgroundResId         = null;
+        private Integer              backgroundMargin         = null;
 
         private Builder() {
         }
@@ -348,6 +354,16 @@ public class Snacky {
         public Builder setBackgroundResource(@DrawableRes int resId) {
             this.backgroundResId = resId;
             this.backgroundColor = null;
+            return this;
+        }
+
+        public Builder setBackgroundMargin(@Px float margin) {
+            this.backgroundMargin = (int) margin;
+            return this;
+        }
+
+        public Builder setBackgroundMargin(@Px int margin) {
+            this.backgroundMargin = margin;
             return this;
         }
 
