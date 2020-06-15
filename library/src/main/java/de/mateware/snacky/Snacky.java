@@ -25,6 +25,7 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.lang.annotation.Retention;
@@ -107,8 +108,12 @@ public class Snacky {
         }
 
         Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) snackbarLayout.getLayoutParams();
-        params.setMargins(builder.backgroundMarginLeft, 0, builder.backgroundMarginRight, builder.backgroundMarginBottom);
+        ViewGroup.LayoutParams layoutParams = snackbarLayout.getLayoutParams();
+        if (layoutParams instanceof FrameLayout.LayoutParams) {
+            ((FrameLayout.LayoutParams) layoutParams).setMargins(builder.backgroundMarginLeft, 0, builder.backgroundMarginRight, builder.backgroundMarginBottom);
+        } else if(layoutParams instanceof CoordinatorLayout.LayoutParams) {
+            ((CoordinatorLayout.LayoutParams) layoutParams).setMargins(builder.backgroundMarginLeft, 0, builder.backgroundMarginRight, builder.backgroundMarginBottom);
+        }
 
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
         if (builder.backgroundResId != null) snackbarLayout.setBackgroundResource(builder.backgroundResId);
