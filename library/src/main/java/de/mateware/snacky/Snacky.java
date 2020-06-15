@@ -33,15 +33,19 @@ import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 public class Snacky {
 
     private enum Type {
-        DEFAULT(null, null, null), SUCCESS(Color.parseColor("#388E3C"),
-                                           R.drawable.ic_check_black_24dp,
-                                           Color.WHITE), ERROR(Color.parseColor("#D50000"),
-                                                               R.drawable.ic_clear_black_24dp,
-                                                               Color.WHITE), INFO(Color.parseColor("#3F51B5"),
-                                                                                  R.drawable.ic_info_outline_black_24dp,
-                                                                                  Color.WHITE), WARNING(Color.parseColor("#FFA900"),
-                                                                                                        R.drawable.ic_error_outline_black_24dp,
-                                                                                                        Color.BLACK);
+        DEFAULT(null, null, null),
+        SUCCESS(Color.parseColor("#388E3C"),
+                R.drawable.ic_check_black_24dp,
+                Color.WHITE),
+        ERROR(Color.parseColor("#D50000"),
+                R.drawable.ic_clear_black_24dp,
+                Color.WHITE),
+        INFO(Color.parseColor("#3F51B5"),
+                R.drawable.ic_info_outline_black_24dp,
+                Color.WHITE),
+        WARNING(Color.parseColor("#FFA900"),
+                R.drawable.ic_error_outline_black_24dp,
+                Color.BLACK);
 
         private Integer color;
         private Integer iconResId;
@@ -99,7 +103,8 @@ public class Snacky {
         Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
 
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
-        if (builder.backgroundColor != null) snackbarLayout.setBackgroundColor(builder.backgroundColor);
+        if (builder.backgroundResId != null) snackbarLayout.setBackgroundResource(builder.backgroundResId);
+        else if (builder.backgroundColor != null) snackbarLayout.setBackgroundColor(builder.backgroundColor);
 
         TextView actionText = snackbarLayout.findViewById(com.google.android.material.R.id.snackbar_action);
         if (builder.actionTextSize != null) {
@@ -201,6 +206,7 @@ public class Snacky {
         private Drawable             icon                    = null;
         private int                  iconResId               = 0;
         private Integer              backgroundColor         = null;
+        private Integer              backgroundResId         = null;
 
         private Builder() {
         }
@@ -335,6 +341,13 @@ public class Snacky {
 
         public Builder setBackgroundColor(@ColorInt int color) {
             this.backgroundColor = color;
+            this.backgroundResId = null;
+            return this;
+        }
+
+        public Builder setBackgroundResource(@DrawableRes int resId) {
+            this.backgroundResId = resId;
+            this.backgroundColor = null;
             return this;
         }
 
