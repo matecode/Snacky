@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.IntDef;
@@ -14,10 +15,12 @@ import androidx.annotation.IntRange;
 import androidx.annotation.Px;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StringRes;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
+
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -105,7 +108,7 @@ public class Snacky {
 
         Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) snackbarLayout.getLayoutParams();
-        params.setMargins(builder.backgroundMargin, 0, builder.backgroundMargin, builder.backgroundMargin);
+        params.setMargins(builder.backgroundMarginLeft, 0, builder.backgroundMarginRight, builder.backgroundMarginBottom);
 
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
         if (builder.backgroundResId != null) snackbarLayout.setBackgroundResource(builder.backgroundResId);
@@ -212,7 +215,9 @@ public class Snacky {
         private int                  iconResId               = 0;
         private Integer              backgroundColor         = null;
         private Integer              backgroundResId         = null;
-        private Integer              backgroundMargin         = null;
+        private Integer              backgroundMarginBottom  = null;
+        private Integer              backgroundMarginRight   = null;
+        private Integer              backgroundMarginLeft    = null;
 
         private Builder() {
         }
@@ -358,12 +363,30 @@ public class Snacky {
         }
 
         public Builder setBackgroundMargin(@Px float margin) {
-            this.backgroundMargin = (int) margin;
+            this.backgroundMarginLeft = (int) margin;
+            this.backgroundMarginRight = (int) margin;
+            this.backgroundMarginBottom = (int) margin;
             return this;
         }
 
         public Builder setBackgroundMargin(@Px int margin) {
-            this.backgroundMargin = margin;
+            this.backgroundMarginLeft = margin;
+            this.backgroundMarginRight = margin;
+            this.backgroundMarginBottom = margin;
+            return this;
+        }
+
+        public Builder setBackgroundMargin(@Px float left, @Px float right, @Px float bottom) {
+            this.backgroundMarginLeft = (int) left;
+            this.backgroundMarginRight = (int) right;
+            this.backgroundMarginBottom = (int) bottom;
+            return this;
+        }
+
+        public Builder setBackgroundMargin(@Px int left, @Px int right, @Px int bottom) {
+            this.backgroundMarginLeft = left;
+            this.backgroundMarginRight = right;
+            this.backgroundMarginBottom = bottom;
             return this;
         }
 
