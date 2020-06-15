@@ -108,15 +108,10 @@ public class Snacky {
         }
 
         Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
-        ViewGroup.LayoutParams layoutParams = snackbarLayout.getLayoutParams();
-        if (layoutParams instanceof FrameLayout.LayoutParams) {
-            FrameLayout.LayoutParams frameLayoutParam =  (FrameLayout.LayoutParams) layoutParams;
-            frameLayoutParam.setMargins(builder.backgroundMarginLeft, 0, builder.backgroundMarginRight, builder.backgroundMarginBottom);
-        } else if(layoutParams instanceof CoordinatorLayout.LayoutParams) {
-            CoordinatorLayout.LayoutParams coordinatorLayoutParam =  (CoordinatorLayout.LayoutParams) layoutParams;
-            coordinatorLayoutParam.setMargins(builder.backgroundMarginLeft, 0, builder.backgroundMarginRight, builder.backgroundMarginBottom);
-        }
-
+        ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) snackbarLayout.getLayoutParams();
+        layoutParams.setMargins(builder.backgroundMarginLeft, 0, builder.backgroundMarginRight, builder.backgroundMarginBottom);
+        snackbarLayout.setLayoutParams(layoutParams);
+        
         if (builder.backgroundColor == null) builder.backgroundColor = builder.type.getColor();
         if (builder.backgroundResId != null) snackbarLayout.setBackgroundResource(builder.backgroundResId);
         else if (builder.backgroundColor != null) snackbarLayout.setBackgroundColor(builder.backgroundColor);
