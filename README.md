@@ -39,6 +39,8 @@ most of them are self-explaining, all colors are *not* Resource Ids, but parsed 
 
 `.setBackgroundColor()` Color
 
+`.setBackgroundResource()` Drawable resource
+
 `.setText()` Charset or IntRes for text
 
 `.setTextColor()` Color or ColorStateList
